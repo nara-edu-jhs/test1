@@ -323,9 +323,8 @@ formData.append("signature", signatureData);
 
 fetch("https://script.google.com/macros/s/AKfycbxGGWLpwC4t0zakpikZewycSmex18fLp6GLHU734ccvd4KV6vrohIg4DQ1jz01P69Jk/exec", {
     method: "POST",
-    
     body: formData
-})
+});
     .then(response => response.text())
     .then(data => {
         // 成功時に完了画面表示
