@@ -200,7 +200,7 @@
             <label>生徒氏名</label>
             <input type="text" id="name" maxlength="30" required>
 
-          <h3>保護者の署名（自筆）</h3>
+          <h3>保護者の署名（自筆）※フルネーム</h3>
 <canvas id="signatureCanvas" width="400" height="200"></canvas>
 <button type="button" onclick="clearSignature()">署名を消去</button>
 
@@ -314,7 +314,7 @@ document.getElementById("applicationForm").addEventListener("submit", function(e
 
     const signatureData = canvas.toDataURL("image/png"); // Canvas署名のデータを取得
 
-    const formData = new FormData();
+    const formData = new URLSearchParams();
 formData.append("grade", document.getElementById("grade").value);
 formData.append("class", document.getElementById("class").value);
 formData.append("number", document.getElementById("number").value);
@@ -323,7 +323,10 @@ formData.append("signature", signatureData);
 
 fetch("https://script.google.com/macros/s/AKfycbzjjy7IKQKV57KYKsZt4YKLMsMsdd21wk2TTb7Qjanxq3Lj_jRbaiHWv8vU959TLSGS/exec", {
     method: "POST",
-    body: formData
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: formData.toString()
 })
     .then(response => response.text())
     .then(data => {
