@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>携帯電話持ち込み申請フォーム</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        label { display: inline; margin-top: 10px; }
+        input, select, button { margin-top: 5px; padding: 8px; width: 100%; }
+        button { background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #45a049; }
+        canvas { border: 1px solid #000; width: 100%; height: 200px; touch-action: none; }
+        .section { margin-bottom: 30px; }
+        .section h3 { margin-top: 20px; }
+        input[type="checkbox"] {
+    width: 0.9em;
+    height: 0.9em;
+    vertical-align:baseline; 
+    margin-right: 5px; }
+        .navigation-buttons { 
+            display: top; 
+            justify-content: space-between; 
+            margin-top: 20px;
+        }
+        .navigation-buttons button {
+            width: 48%; /* ボタンが横並びになるよう調整 */
+        }
+        .checkbox-label { display: block; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <form id="applicationForm">
+        <!-- セクション1 -->
+        <div class="section" id="section1">
+            <h3>携帯電話の持ち込み申請フォーム(宿泊学習)</h3>
+            <p>宿泊学習前後の安全確保や緊急連絡の手段として、携帯電話の持ち込み許可を申請します。</p>
+<div style="border: 2px solid #000; padding: 5px; margin: 10px;">
+            <p>（注意）</p>
+<p>①未申請の生徒の使用が宿泊学習中に確認された場合、不要物として引率教員が預かり、指導後に直接保護者に返却します。</p>
+<p>②申請済みの生徒であっても、「宿泊学習前後の安全確保や緊急連絡の手段」以外の使用が確認された場合、①と同様に、不要物として引率教員が預かり、指導後に直接保護者に返却します。</p>
+</div>
+            <label>『学校への携帯電話・スマートフォンの持ち込みについて』のプリントをよく読み、家庭内でも本人としっかりと使用上のルールやマナー、管理について確認しました。</label><br>
+            <label class="checkbox-label">
+    <input type="checkbox" id="parentConfirmation" required>確認しました。
+</label>
+
+            <div class="navigation-buttons">
+                <button type="button" onclick="nextSection(1)">次へ</button>
+            </div>
+        </div>
+
+        <!-- セクション2 -->
+        <div class="section" id="section2" style="display:none;">
+           <h3 style="
+  display: inline-block;
+  background-image: linear-gradient(to bottom, #c2e7cc 100%, #c2e7cc 100%);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+">生徒が回答してください</h3>
+            <p>以下に示されたルールを読んで、チェックを入れてください。</p>
+            <label>◆活動中は使用しません（ただし、教員立ち会いのもと緊急連絡を行うことを除く）。</label><br>
+           <label class="checkbox-label">
+    <input type="checkbox" id="parentConfirmation" required>確認しました。
+</label>
+
+<label>◆宿泊施設に到着後は、学校の指示のもと、貴重品と同様に宿泊施設に預けます。</label><br>
+           <label class="checkbox-label">
+    <input type="checkbox" id="parentConfirmation" required>確認しました。
+</label>
+
+            <label>◆イヤホンや充電器などの付属品を持ち込みません。</label><br>
+           <label class="checkbox-label">
+    <input type="checkbox" id="parentConfirmation" required>確認しました。
+</label>
+
+            <label>◆首や衣服につり下げた状態で持ち運びません。<label class="checkbox-label">
+    <input type="checkbox" id="parentConfirmation" required>確認しました。
+</label>
+
+            <label>◆違反者が多い場合には、全体の許可を取り消すことも理解しています。</label><br>
+           <label class="checkbox-label">
+    <input type="checkbox" id="parentConfirmation" required>
+確認しました。</label>
+
+            <div class="navigation-buttons">
+                <button type="button" onclick="previousSection(2)">戻る</button>
+                <button type="button" onclick="nextSection(2)">次へ</button>
+            </div>
+        </div>
+
+        <!-- セクション3 -->
+        <div class="section" id="section3" style="display:none;">
+            <h3 style="
+  display: inline-block;
+  background-image: linear-gradient(to bottom, #f8cccc 100%, #f8cccc 100%);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+">保護者の方が回答してください</h3>
+            <p>ご家庭で以下の内容をご確認して、確認されたらチェックを入れてください。</p>
+            <label>◆宿泊学習中のルールを家庭でも確認しました。必ず守らせます。</label><br>
+            <label class="checkbox-label">
+    <input type="checkbox" id="parentConfirmation" required>了解しました。
+</label>
+
+            <label>◆宿泊学習への持ち込みの際に起こりうる紛失、破損などの責任は、すべて家庭で負います。</label><br>
+            <label class="checkbox-label">
+    <input type="checkbox" id="parentConfirmation" required>了解しました。
+</label>
+
+<label>◆宿泊学習のルールに則り、しっかりと管理・保管させます。</label><br>
+            <label class="checkbox-label">
+    <input type="checkbox" id="parentConfirmation" required>了解しました。
+</label>
+
+            <label>◆緊急連絡以外の使用による一切のトラブルの責任は、家庭で負います。</label><br>
+           <label class="checkbox-label">
+    <input type="checkbox" id="parentConfirmation" required>了解しました。
+</label>
+
+            <div class="navigation-buttons">
+                <button type="button" onclick="previousSection(3)">戻る</button>
+                <button type="button" onclick="nextSection(3)">次へ</button>
+            </div>
+        </div>
+
+        <!-- セクション4 -->
+        <div class="section" id="section4" style="display:none;">
+            <label>上記のことを確認、約束し、持ち込み許可の条件とルールを理解しました。</label><br>
+            <label class="checkbox-label">
+    <input type="checkbox" id="parentConfirmation" required>確認しました。
+</label>
+
+            <div class="navigation-buttons">
+                <button type="button" onclick="previousSection(4)">戻る</button>
+                <button type="button" onclick="nextSection(4)">次へ</button>
+            </div>
+        </div>
+
+        <!-- セクション5 -->
+        <div class="section" id="section5" style="display:none;">
+            <label>学年</label>
+            <select id="grade">
+              　<option value="">選択してください</option>
+                <option value="1">1年</option>
+                <option value="2">2年</option>
+                <option value="3">3年</option>
+            </select>
+
+            <label>組</label>
+            <select id="class">
+                <option value="">選択してください</option>
+                <option value="1">1組</option>
+                <option value="2">2組</option>
+                <option value="3">3組</option>
+                <option value="4">4組</option>
+                <option value="5">5組</option>
+            </select>
+
+            <label>出席番号</label>
+            <select id="number" required>
+                <option value="">選択してください</option>
+                <option value="1">1番</option>
+                <option value="2">2番</option>
+                <option value="3">3番</option>
+                <option value="4">4番</option>
+                <option value="5">5番</option>
+                <option value="6">6番</option>
+                <option value="7">7番</option>
+                <option value="8">8番</option>
+                <option value="9">9番</option>
+                <option value="10">10番</option>
+                <option value="11">11番</option>
+                <option value="12">12番</option>
+                <option value="13">13番</option>
+                <option value="14">14番</option>
+                <option value="15">15番</option>
+                <option value="16">16番</option>
+                <option value="17">17番</option>
+                <option value="18">18番</option>
+                <option value="19">19番</option>
+                <option value="20">20番</option>
+                <option value="21">21番</option>
+                <option value="22">22番</option>
+                <option value="23">23番</option>
+                <option value="24">24番</option>
+                <option value="25">25番</option>
+                <option value="26">26番</option>
+                <option value="27">27番</option>
+                <option value="28">28番</option>
+                <option value="29">29番</option>
+                <option value="30">30番</option>
+                <option value="31">31番</option>
+                <option value="32">32番</option>
+                <option value="33">33番</option>
+                <option value="34">34番</option>
+            </select>
+
+            <label>生徒氏名</label>
+            <input type="text" id="name" maxlength="30" required>
+
+          <h3>保護者の署名（自筆）</h3>
+<canvas id="signatureCanvas" width="400" height="200"></canvas>
+<button type="button" onclick="clearSignature()">署名を消去</button>
+
+<div class="navigation-buttons">
+    <button type="button" onclick="previousSection(5)">戻る</button>
+    <button type="submit">送信(クリック後しばらくお待ちください)</button>
+</div>
+
+</div>
+</form>
+
+<script>
+    let currentSection = 1;
+
+    const canvas = document.getElementById("signatureCanvas");
+    const ctx = canvas.getContext("2d");
+    let drawing = false;
+
+    // キャンバスの座標計算を修正
+    function getCanvasPos(event) {
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;  // 横方向のスケール比
+        const scaleY = canvas.height / rect.height;  // 縦方向のスケール比
+        const touch = event.touches ? event.touches[0] : event;  // タッチイベント対応
+        return {
+            x: (touch.clientX - rect.left) * scaleX,
+            y: (touch.clientY - rect.top) * scaleY
+        };
+    }
+
+    // 描き始め
+    function startDrawing(event) {
+        event.preventDefault();
+        drawing = true;
+        const pos = getCanvasPos(event);
+        ctx.beginPath();
+        ctx.moveTo(pos.x, pos.y);
+        ctx.lineTo(pos.x, pos.y);  // 最初の点を描画
+        ctx.stroke();
+    }
+
+    // 描き続け
+    function draw(event) {
+        if (!drawing) return;
+        event.preventDefault();
+        const pos = getCanvasPos(event);
+        ctx.lineTo(pos.x, pos.y);
+        ctx.stroke();
+    }
+
+    // 描き終わり
+    function stopDrawing() {
+        drawing = false;
+        ctx.beginPath();
+    }
+
+    // 署名を消去
+    function clearSignature() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    // マウスイベント
+    canvas.addEventListener("mousedown", startDrawing);
+    canvas.addEventListener("mousemove", draw);
+    canvas.addEventListener("mouseup", stopDrawing);
+    canvas.addEventListener("mouseleave", stopDrawing);
+
+    // タッチイベント
+    canvas.addEventListener("touchstart", (event) => startDrawing(event));
+    canvas.addEventListener("touchmove", (event) => draw(event));
+    canvas.addEventListener("touchend", stopDrawing);
+    canvas.addEventListener("touchcancel", stopDrawing);
+
+    function nextSection(section) {
+        if (validateSection(section)) {
+            document.getElementById(`section${section}`).style.display = 'none';
+            currentSection++;
+            document.getElementById(`section${currentSection}`).style.display = 'block';
+          window.scrollTo(0, 0); //
+        } else {
+            alert('必須項目を確認してください。');
+        }
+    }
+
+    function previousSection(section) {
+        document.getElementById(`section${section}`).style.display = 'none';
+        currentSection--;
+        document.getElementById(`section${currentSection}`).style.display = 'block';
+      window.scrollTo(0, 0); //
+    }
+
+    function validateSection(section) {
+        const checkboxes = document.querySelectorAll(`#section${section} input[type="checkbox"]`);
+        for (let checkbox of checkboxes) {
+            if (!checkbox.checked) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    window.onload = () => {
+       window.scrollTo(0, 0); // ページトップへ強制スクロール
+        document.getElementById(`section${currentSection}`).style.display = 'block';
+    }
+
+    // **送信ボタンの処理を追加**
+   
+document.getElementById("applicationForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // フォームの送信を防ぐ
+
+    const signatureData = canvas.toDataURL("image/png"); // Canvas署名のデータを取得
+
+    const formData = new URLSearchParams();
+formData.append("grade", document.getElementById("grade").value);
+formData.append("class", document.getElementById("class").value);
+formData.append("number", document.getElementById("number").value);
+formData.append("name", document.getElementById("name").value);
+formData.append("signature", signatureData);
+
+fetch("https://script.google.com/macros/s/AKfycbxGGWLpwC4t0zakpikZewycSmex18fLp6GLHU734ccvd4KV6vrohIg4DQ1jz01P69Jk/exec", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: formData.toString()
+})
+    .then(response => response.text())
+    .then(data => {
+        // 成功時に完了画面表示
+        document.body.innerHTML = `
+ <div style="display: flex; justify-content: center; align-items: center; height: 20vh; flex-direction: column; text-align: center;">           
+<h2>申請完了</h2>
+            <p style="font-size: 20px; font-weight: bold; color: green; text-align: center;">
+                持ち込み許可申請を受理しました。<br>申請したことを、必ず学年教員(学級担当等)に連絡してください。
+            </p>
+        `;
+    })
+    .catch(error => {
+        alert("送信中にエラーが発生しました：" + error);
+    });
+});
+</script>
+
+
+</body>
+</html>
