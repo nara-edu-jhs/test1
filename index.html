@@ -314,7 +314,7 @@ document.getElementById("applicationForm").addEventListener("submit", function(e
 
     const signatureData = canvas.toDataURL("image/png"); // Canvas署名のデータを取得
 
-    const formData = new URLSearchParams();
+    const formData = new FormData();
 formData.append("grade", document.getElementById("grade").value);
 formData.append("class", document.getElementById("class").value);
 formData.append("number", document.getElementById("number").value);
@@ -326,7 +326,7 @@ fetch("https://script.google.com/macros/s/AKfycbxGGWLpwC4t0zakpikZewycSmex18fLp6
     headers: {
         "Content-Type": "application/x-www-form-urlencoded"
     },
-    body: formData.toString()
+    body: formData
 })
     .then(response => response.text())
     .then(data => {
