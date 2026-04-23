@@ -323,9 +323,7 @@ formData.append("signature", signatureData);
 
 fetch("https://script.google.com/macros/s/AKfycbxGGWLpwC4t0zakpikZewycSmex18fLp6GLHU734ccvd4KV6vrohIg4DQ1jz01P69Jk/exec", {
     method: "POST",
-    headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-    },
+    
     body: formData
 })
     .then(response => response.text())
